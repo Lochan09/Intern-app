@@ -1,0 +1,139 @@
+<div class="container">
+  <div class="operations-container" id="operationsContainer">
+    <div class="leftcontainer">
+      <label for="" id="label">Operations-container</label>
+    </div>
+    <div class="rightcontainer">
+      <button class="import-button" (click)="fileInput.click()">
+        Import Data
+      </button>
+      <input
+        type="file"
+        #fileInput
+        (change)="onFileSelected($event)"
+        style="display: none"
+        accept=".csv"
+      />
+      <button class="export-button" (click)="exportData()">Export Data</button>
+      <div class="searchTerm">
+        <label for="search" id="searchLabel">Search: </label>
+        &nbsp;
+        <div [formGroup]="myGroup">
+          <input
+            id="search"
+            type="text"
+            placeholder="Search"
+            formControlName="searchTerm"
+            (keyup)="applyFilter()"
+          />
+        </div>
+      </div>
+
+      <button class="add-button" (click)="openDialog()">Add Product</button>
+      <button class="filter-button" (click)="toggleFilters()">
+        Toggle Filters
+      </button>
+      <button class="delete-button" (click)="deleteSelected()">
+        Delete Selected
+      </button>
+    </div>
+  </div>
+  <br />
+
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <input
+            type="checkbox"
+            class="custom-checkbox"
+            (change)="masterToggle()"
+            [checked]="isAllSelected()"
+            [indeterminate]="isSomeSelected()"
+          />
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <input
+            type="checkbox"
+            class="custom-checkbox"
+            (click)="$event.stopPropagation()"
+            (change)="toggleSelection(element)"
+            [checked]="selection.isSelected(element)"
+          />
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="productName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Product Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.productName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+        <td mat-cell *matCellDef="let element">{{ element.category }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Status
+          <button mat-icon-button (click)="sortDataByHeader('status')">
+            <mat-icon>sort</mat-icon>
+          </button>
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          [ngClass]="{
+            'status-completed': element.status === 'completed',
+            'status-pending': element.status === 'pending'
+          }"
+        >
+          {{ element.status }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="createdDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Created Date
+          <button mat-icon-button (click)="sortDataByHeader('createdDate')">
+            <mat-icon>sort</mat-icon>
+          </button>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.createdDate }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button (click)="edit(element)">
+            <mat-icon class="edit-icon">edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="delete(element)">
+            <mat-icon class="delete-icon">delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator
+      class="paginator"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 20, 40]"
+      showFirstLastButtons
+    >
+    </mat-paginator>
+  </div>
+</div>

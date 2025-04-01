@@ -1,0 +1,42 @@
+<form [formGroup]="filterForm" (ngSubmit)="applyFilter()">
+  <div class="filter-container">
+    <mat-form-field>
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option value="">All</mat-option>
+        <mat-option value="pending">Pending</mat-option>
+        <mat-option value="completed">Completed</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Start Date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="startDatePicker"
+        formControlName="startDate"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="startDatePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #startDatePicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>End Date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="endDatePicker"
+        formControlName="endDate"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="endDatePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #endDatePicker></mat-datepicker>
+    </mat-form-field>
+
+    <button mat-raised-button type="submit">Apply Filters</button>
+  </div>
+</form>

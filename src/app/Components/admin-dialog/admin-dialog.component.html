@@ -1,0 +1,89 @@
+<div class="mat-dialog-content">
+  <div class="header">
+    <h2>{{ data.productName ? "Edit User" : "Add User" }}</h2>
+    <button mat-icon-button (click)="onNoClick()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label class="mat-label">ID:</label>
+      <input matInput placeholder="ID" formControlName="id" type="number" />
+      <mat-error
+        *ngIf="
+          adminForm.get('id')!.hasError('required') &&
+          (adminForm.get('id')!.touched || adminForm.get('id')!.dirty)
+        "
+      >
+        ID is required
+      </mat-error>
+    </div>
+    <div class="form-group">
+      <label class="mat-label">Name:</label>
+      <input matInput placeholder="Name" formControlName="name" type="text" />
+      <mat-error
+        *ngIf="
+          adminForm.get('name')!.hasError('required') &&
+          (adminForm.get('name')!.touched || adminForm.get('name')!.dirty)
+        "
+      >
+        name is required
+      </mat-error>
+    </div>
+    <div class="form-group">
+      <label class="mat-label">Email:</label>
+      <input matInput placeholder="Email" formControlName="email" type="text" />
+      <mat-error
+        *ngIf="
+          adminForm.get('email')!.hasError('required') &&
+          (adminForm.get('email')!.touched || adminForm.get('email')!.dirty)
+        "
+      >
+        email is required
+      </mat-error>
+    </div>
+    <div class="form-group">
+      <label class="mat-label">Status:</label>
+
+      <select matInput placeholder="Status" formControlName="status">
+        <option value="pending">Pending</option>
+        <option value="completed">Completed</option>
+      </select>
+      <mat-error
+        *ngIf="
+          adminForm.get('status')!.hasError('required') &&
+          (adminForm.get('status')!.touched || adminForm.get('status')!.dirty)
+        "
+      >
+        Status is required
+      </mat-error>
+    </div>
+    <div class="form-group">
+      <label class="mat-label">Department:</label>
+      <select matInput placeholder="Department" formControlName="department">
+        <option value="engineering">Engineering</option>
+        <option value="medical">Medical</option>
+        <option value="marketing">Marketing</option>
+        <option value="sales">Sales</option>
+        <option value="finance">Finance</option>
+      </select>
+      <mat-error
+        *ngIf="
+          adminForm.get('department')!.hasError('required') &&
+          (adminForm.get('department')!.touched ||
+            adminForm.get('department')!.dirty)
+        "
+      >
+        Department is required
+      </mat-error>
+    </div>
+    <div class="form-actions">
+      <button mat-raised-button class="submit-button" type="submit">
+        {{ data ? "Save" : "Add" }}
+      </button>
+      <button mat-raised-button class="cancel-button" (click)="onNoClick()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

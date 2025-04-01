@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="nav-button-container">
+    <button mat-raised-button class="nav-button" (click)="navigateTo('admin')">
+      Admin Table
+    </button>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-wrapper">
+      <h2>Status Distribution</h2>
+      <canvas id="pieChart" width="200" height="200"></canvas>
+    </div>
+    <div class="chart-wrapper">
+      <h2>Department Distribution</h2>
+      <canvas id="barChart" width="200" height="200"></canvas>
+    </div>
+    <div class="chart-wrapper">
+      <h2>Completion Percentage by Department</h2>
+      <canvas id="completionChart" width="200" height="200"></canvas>
+    </div>
+    <div class="chart-wrapper">
+      <h2>Completion Percentage by Department</h2>
+      <canvas id="lineChart" width="200" height="200"></canvas>
+    </div>
+  </div>
+</div>

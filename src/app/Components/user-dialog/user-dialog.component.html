@@ -1,0 +1,99 @@
+<div class="mat-dialog-content">
+  <div class="header">
+    <h2>{{ data.productName ? "Edit User" : "Add User" }}</h2>
+    <button mat-icon-button (click)="onNoClick()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label class="mat-label">ID:</label>
+      <input placeholder="ID" formControlName="id" type="number" />
+      <mat-error
+        *ngIf="
+          userForm.get('id')!.hasError('required') &&
+          (userForm.get('id')!.touched || userForm.get('id')!.dirty)
+        "
+      >
+        ID is required
+      </mat-error>
+    </div>
+    <div class="form-group">
+      <label class="mat-label">Product Name:</label>
+      <input
+        placeholder="Product Name"
+        formControlName="productName"
+        type="text"
+      />
+      <mat-error
+        *ngIf="
+          userForm.get('productName')!.hasError('required') &&
+          (userForm.get('productName')!.touched ||
+            userForm.get('productName')!.dirty)
+        "
+      >
+        Product name is required
+      </mat-error>
+    </div>
+    <div class="form-group">
+      <label class="mat-label">Description:</label>
+      <input
+        placeholder="Description"
+        formControlName="description"
+        type="text"
+      />
+      <mat-error
+        *ngIf="
+          userForm.get('description')!.hasError('required') &&
+          (userForm.get('description')!.touched ||
+            userForm.get('description')!.dirty)
+        "
+      >
+        Description is required
+      </mat-error>
+    </div>
+    <div class="form-group">
+      <label class="mat-label">Category:</label>
+      <select formControlName="category">
+        <option value="" disabled>Select Category</option>
+        <option value="engineering">Engineering</option>
+        <option value="medical">Medical</option>
+        <option value="marketing">Marketing</option>
+        <option value="sales">Sales</option>
+        <option value="finance">Finance</option>
+      </select>
+      <mat-error
+        *ngIf="
+          userForm.get('category')!.hasError('required') &&
+          (userForm.get('category')!.touched || userForm.get('category')!.dirty)
+        "
+      >
+        Category is required
+      </mat-error>
+    </div>
+    <div class="form-group">
+      <label class="mat-label">Status:</label>
+      <select formControlName="status">
+        <option value="" disabled>Select Status</option>
+        <option value="pending">Pending</option>
+        <option value="completed">Completed</option>
+      </select>
+      <mat-error
+        *ngIf="
+          userForm.get('status')!.hasError('required') &&
+          (userForm.get('status')!.touched || userForm.get('status')!.dirty)
+        "
+      >
+        Status is required
+      </mat-error>
+    </div>
+    <div class="form-actions">
+      <button mat-raised-button class="submit-button" type="submit">
+        {{ data ? "Save" : "Add" }}
+      </button>
+      <button mat-raised-button class="cancel-button" (click)="onNoClick()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

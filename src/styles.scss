@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: rgb(220, 220, 220);
+  color: white;
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+body.light-mode {
+  background-color: #add8e6;
+  color: black;
+}
+
+body.light-mode .container,
+body.light-mode .header-container,
+body.light-mode .table-container {
+  background-color: #add8e6;
+  color: #000000;
+}

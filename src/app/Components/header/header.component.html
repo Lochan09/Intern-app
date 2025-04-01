@@ -1,0 +1,20 @@
+<div class="header-container">
+  <span class="header-text">InfoStream</span>
+  <div class="right-part">
+    <span class="greet-message">{{ greeting }}</span>
+    &nbsp;&nbsp;
+    <span class="time">{{ currentDateTime }}</span>
+    &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+    <div class="themeSelector">
+      <label for="themeSelector">Select Theme:</label>
+      <select id="themeSelector" (change)="changeTheme($event)">
+        <option value="dark" [selected]="isDarkMode">Dark</option>
+        <option value="light" [selected]="!isDarkMode">Light</option>
+      </select>
+      &nbsp;&nbsp;
+    </div>
+    <button (click)="Logout()" id="logoutButton" *ngIf="showLogoutButton">
+      <mat-icon>logout</mat-icon> Logout
+    </button>
+  </div>
+</div>

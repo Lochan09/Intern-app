@@ -1,0 +1,191 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  background: linear-gradient(120deg, #1f2937, #3b82f6, #1f2937);
+  background-size: 300% 300%;
+  animation: gradientAnimation 8s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  background-color: rgba(255, 255, 255, 0.8);
+  opacity: 0.7;
+  backdrop-filter: blur(10px);
+  color: black;
+  padding: 3rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  z-index: 1000;
+  animation: slideIn 1s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: black;
+  animation: fadeInText 1.5s ease-in-out;
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+p {
+  text-align: center;
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+  color: black;
+}
+
+form {
+  margin-bottom: 1.5rem;
+  padding: 4px;
+  width: 100%;
+}
+
+label {
+  display: block;
+  color: black;
+  margin-bottom: 0.5rem;
+}
+
+input {
+  width: 93%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  outline: none;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+input:focus {
+  box-shadow: 0 0 0 2px #3b82f6;
+  transform: scale(1.02);
+}
+
+button {
+  width: 100%;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 0.5rem 0;
+  border-radius: 0.5rem;
+  align-items: center;
+  transition: background-color 0.2s, transform 0.2s;
+  border: none;
+  cursor: pointer;
+  animation: bounceIn 1.2s ease-in-out;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+button:hover {
+  background-color: #1f2937;
+  transform: scale(1.05);
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+  font-size: 1rem;
+  animation: fadeInError 0.5s ease-in-out;
+}
+
+@keyframes fadeInError {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.floating-shape {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-shape:nth-child(1) {
+  top: 10%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.floating-shape:nth-child(2) {
+  top: 30%;
+  left: 70%;
+  animation-delay: 2s;
+}
+
+.floating-shape:nth-child(3) {
+  top: 60%;
+  left: 40%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.1);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
