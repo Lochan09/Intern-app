@@ -13,12 +13,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { SelectionModel } from '@angular/cdk/collections';
 import { DataService } from '../../data.service';
 import { AdminDialogComponent } from '../admin-dialog/admin-dialog.component';
 import { MatSelectModule } from '@angular/material/select';
 import * as Papa from 'papaparse';
+import { MatTabsModule } from '@angular/material/tabs';
+import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.component';
+import { GenaiComponent } from '../genai/genai.component';
+import { ImagetotextComponent } from '../imagetotext/imagetotext.component';
+import { AisupportComponent } from '../aisupport/aisupport.component';
 
 @Component({
   selector: 'app-user',
@@ -36,9 +41,16 @@ import * as Papa from 'papaparse';
     MatPaginatorModule,
     MatSelectModule,
     MatIconModule,
+    MatTabsModule,
+    RouterModule,
+    AdminDashboardComponent,
+    GenaiComponent,
+    ImagetotextComponent,
+    AisupportComponent,
   ],
 })
 export class AdminComponent implements OnInit {
+  selectedTabIndex = 0;
   adminForm: FormGroup;
   dataSource = new MatTableDataSource<any>([]);
   originalData: any[] = [];
@@ -90,6 +102,18 @@ export class AdminComponent implements OnInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+
+  onTabChanged(event: any): void {
+    if (event.index === 1) {
+      this.navigateTo('admin-dashboard');
+    } else if (this.selectedTabIndex === 2) {
+      this.navigateTo('genai');
+    } else if (this.selectedTabIndex === 3) {
+      this.navigateTo('imagetotext');
+    } else if (this.selectedTabIndex === 4) {
+      this.navigateTo('aisupport');
+    }
   }
 
   loaddata(): void {
@@ -199,7 +223,6 @@ export class AdminComponent implements OnInit {
       ?.value.trim()
       .toLowerCase();
     const status = filter.status;
-
     this.dataSource.data = this.originalData.filter((item: any) => {
       const matchesSearchTerm =
         item.department.toLowerCase().includes(searchTerm) ||

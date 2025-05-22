@@ -1,0 +1,129 @@
+<div class="aisupport-container">
+  <h1>Sentiment Analysis Assistant</h1>
+
+  <div class="chat-section">
+    <div class="chat-container" #chatContainer>
+      <div class="messages-list">
+        <div
+          *ngFor="let message of messages"
+          [ngClass]="{
+            'user-message': message.role === 'user',
+            'assistant-message': message.role === 'assistant'
+          }"
+        >
+          <div class="message-content">
+            <div class="message-header">
+              <strong>{{
+                message.role === "user" ? "You" : "AI Assistant"
+              }}</strong>
+              <span class="timestamp">{{
+                message.timestamp | date : "shortTime"
+              }}</span>
+            </div>
+            <div class="message-text">{{ message.content }}</div>
+            <div
+              *ngIf="message.role === 'assistant' && message.sentimentData"
+              class="sentiment-visualization"
+            >
+              <div class="sentiment-bars">
+                <div
+                  *ngFor="let sentiment of getSentiments(message.sentimentData)"
+                  class="sentiment-bar"
+                  [style.width.%]="
+                    getSentimentPercentage(message.sentimentData, sentiment)
+                  "
+                  [ngClass]="{
+                    positive: formatSentimentLabel(sentiment) === 'Positive',
+                    neutral: formatSentimentLabel(sentiment) === 'Neutral',
+                    negative: formatSentimentLabel(sentiment) === 'Negative'
+                  }"
+                >
+                  <span
+                    >{{ formatSentimentLabel(sentiment) }}:
+                    {{
+                      getSentimentPercentage(message.sentimentData, sentiment)
+                    }}%</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="isLoading" class="loading-message">
+        <div class="loading-indicator">
+          <div class="typing-indicator">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="loading-text">AI is analyzing sentiment...</div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
+    <div class="input-area">
+      <input
+        type="text"
+        [(ngModel)]="userInput"
+        placeholder="Type text to analyze sentiment..."
+        [disabled]="isLoading"
+        (keyup.enter)="sendMessage()"
+      />
+      <button
+        [disabled]="isLoading || !userInput.trim()"
+        (click)="sendMessage()"
+        class="send-button"
+      >
+        <mat-icon>send</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="suggestion-section">
+    <h3>Try these examples:</h3>
+    <div class="suggestion-buttons">
+      <button
+        (click)="askQuestion('I love this application! It works perfectly.')"
+      >
+        Positive Text
+      </button>
+      <button (click)="askQuestion('This is okay, but could be better.')">
+        Neutral Text
+      </button>
+      <button
+        (click)="askQuestion('This is terrible. I hate using this interface.')"
+      >
+        Negative Text
+      </button>
+      <button
+        (click)="
+          askQuestion(
+            'I felt happy at first but then became frustrated when it crashed.'
+          )
+        "
+      >
+        Mixed Emotions
+      </button>
+    </div>
+  </div>
+
+  <div class="instructions">
+    <h3>About This Tool</h3>
+    <p>
+      This sentiment analysis tool uses AI to determine the emotional tone of
+      text. It can help you:
+    </p>
+    <ul>
+      <li>Analyze customer feedback for positive and negative sentiments</li>
+      <li>Evaluate the tone of messages before sending them</li>
+      <li>Understand how your text might be perceived by others</li>
+      <li>Works with multiple languages - try it!</li>
+    </ul>
+  </div>
+</div>

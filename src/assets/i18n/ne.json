@@ -1,0 +1,18 @@
+{
+  "APP_TITLE": "इन्फोस्ट्रीम, महबूबको मार्गदर्शनमा",
+  "GOOD_MORNING": "शुभ प्रभात",
+  "GOOD_AFTERNOON": "शुभ अपराह्न",
+  "GOOD_EVENING": "शुभ सन्ध्या",
+  "SELECT_LANGUAGE": "भाषा चयन गर्नुहोस्",
+  "LANGUAGE_ENGLISH": "अंग्रेजी",
+  "LANGUAGE_HINDI": "हिन्दी",
+  "LANGUAGE_KANNADA": "कन्नड",
+  "LANGUAGE_TELUGU": "तेलुगु",
+  "LANGUAGE_TAMIL": "तमिल",
+  "LANGUAGE_MALAYALAM": "मलयालम",
+  "LANGUAGE_NEPALI": "नेपाली",
+  "SELECT_THEME": "थीम चयन गर्नुहोस्",
+  "THEME_DARK": "गाढा",
+  "THEME_LIGHT": "हल्का",
+  "LOGOUT": "लगआउट"
+}

@@ -4,6 +4,7 @@ import { AdminComponent } from './Components/admin/admin.component';
 import { LoginComponent } from './Components/login/login.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { HttpClient } from '@angular/common/http';
+import { Notification } from './notification.service';
 
 @Component({
   selector: 'app-root',
@@ -17,14 +18,4 @@ export class AppComponent {
   http = inject(HttpClient);
 
   private API_URL = 'https://localhost:3002';
-
-  // getPosts() {
-  //   return this.http.get(`${this.API_URL}/post`);
-  // }
-
-  // constructor() {
-  //   this.getPosts().subscribe((data: any) => {
-  //     console.log(data);
-  //   });
-  // }
 }

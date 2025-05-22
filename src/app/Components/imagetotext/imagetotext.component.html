@@ -1,0 +1,86 @@
+<div class="genai-container">
+  <h1>Image to Text Analyzer</h1>
+
+  <div class="input-section">
+    <label for="image-upload">Upload an image to analyze: </label>
+    <div class="file-upload-container">
+      <input
+        type="file"
+        id="image-upload"
+        accept="image/*"
+        (change)="onFileSelected($event)"
+      />
+      <div class="upload-button" (click)="triggerFileInput()">
+        <mat-icon>file_upload</mat-icon>
+        <span>Choose Image</span>
+      </div>
+      <span class="file-name" *ngIf="selectedFileName">{{
+        selectedFileName
+      }}</span>
+    </div>
+
+    <div class="url-input">
+      <label for="image-url">Or enter image URL:</label>
+      <input
+        type="text"
+        id="image-url"
+        placeholder="https://example.com/image.jpg"
+        [(ngModel)]="imageUrl"
+      />
+    </div>
+
+    <button
+      id="analyze-btn"
+      [disabled]="isLoading || (!imageFile && !imageUrl)"
+      (click)="analyzeImage()"
+    >
+      {{ isLoading ? "Analyzing..." : "Generate Description" }}
+    </button>
+  </div>
+
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <div class="preview-container" *ngIf="imagePreviewUrl">
+    <h3>Image Preview:</h3>
+    <img
+      [src]="imagePreviewUrl"
+      alt="Preview of uploaded image"
+      class="image-preview"
+    />
+  </div>
+
+  <div class="results-container">
+    <div class="loading-indicator" *ngIf="isLoading">
+      <div class="loading-animation">
+        <div class="orbit"></div>
+        <div class="orbit"></div>
+        <div class="orbit"></div>
+        <div class="dot"></div>
+      </div>
+      <div class="loading-text">
+        <span>AI is analyzing your image</span>
+        <div class="dot-typing"></div>
+      </div>
+    </div>
+
+    <div class="text-result" *ngIf="generatedText">
+      <h3>Generated Description:</h3>
+      <div class="text-content">{{ generatedText }}</div>
+      <button class="copy-btn" (click)="copyToClipboard()">
+        <mat-icon>content_copy</mat-icon> Copy
+      </button>
+    </div>
+  </div>
+
+  <div class="instructions">
+    <h3>Tips for best results:</h3>
+    <ul>
+      <li>Upload clear, high-quality images</li>
+      <li>Avoid images with too many objects or complex scenes</li>
+      <li>Make sure the main subject is clearly visible</li>
+      <li>Images with good lighting will produce better descriptions</li>
+    </ul>
+  </div>
+</div>

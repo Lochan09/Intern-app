@@ -1,20 +1,53 @@
 <div class="header-container">
-  <span class="header-text">InfoStream</span>
+  <span class="header-text">{{ "APP_TITLE" | translate }}</span>
+
   <div class="right-part">
-    <span class="greet-message">{{ greeting }}</span>
-    &nbsp;&nbsp;
-    <span class="time">{{ currentDateTime }}</span>
-    &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-    <div class="themeSelector">
-      <label for="themeSelector">Select Theme:</label>
-      <select id="themeSelector" (change)="changeTheme($event)">
-        <option value="dark" [selected]="isDarkMode">Dark</option>
-        <option value="light" [selected]="!isDarkMode">Light</option>
+    <span *ngIf="isLoggedIn" class="greet-message">{{
+      greeting | translate
+    }}</span>
+    <span *ngIf="isLoggedIn" class="time">{{ currentDateTime }}</span>
+
+    <div class="languageSelector" *ngIf="!isLoginPage">
+      <label
+        for="languageSelector"
+        class="icon-label"
+        [attr.aria-label]="'Select Language:' | translate"
+      >
+        <mat-icon id="language-icon">language</mat-icon>
+      </label>
+
+      <select
+        id="languageSelector"
+        (change)="changeLanguage($event)"
+        class="flag-select"
+        [attr.aria-label]="'Select Language:' | translate"
+      >
+        <option value="en" title="{{ 'ENGLISH' | translate }}">English</option>
+        <option value="hi" title="{{ 'HINDI' | translate }}">हिंदी</option>
+        <option value="kn" title="{{ 'KANNADA' | translate }}">ಕನ್ನಡ</option>
+        <option value="te" title="{{ 'TELUGU' | translate }}">తెలుగు</option>
+        <option value="ta" title="{{ 'TAMIL' | translate }}">தமிழ்</option>
+        <option value="ml" title="{{ 'MALAYALAM' | translate }}">മലയാളം</option>
+        <option value="ne" title="{{ 'NEPALI' | translate }}">नेपाली</option>
       </select>
-      &nbsp;&nbsp;
     </div>
-    <button (click)="Logout()" id="logoutButton" *ngIf="showLogoutButton">
-      <mat-icon>logout</mat-icon> Logout
+
+    <div class="themeSelector" *ngIf="!isLoginPage">
+      <label id="select-theme" for="themeSelector">{{
+        "SELECT_THEME" | translate
+      }}</label>
+      <select id="themeSelector" (change)="changeTheme($event)">
+        <option value="dark" [selected]="isDarkMode">
+          {{ "THEME_DARK" | translate }}
+        </option>
+        <option value="light" [selected]="!isDarkMode">
+          {{ "THEME_LIGHT" | translate }}
+        </option>
+      </select>
+    </div>
+
+    <button *ngIf="isLoggedIn" (click)="Logout()" id="logoutButton">
+      <mat-icon>logout</mat-icon> {{ "LOGOUT" | translate }}
     </button>
   </div>
 </div>

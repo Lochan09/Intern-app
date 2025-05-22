@@ -1,0 +1,17 @@
+{
+  "APP_TITLE": "இன்ஃபோஸ்ட்ரீம், மஹபூப் வழிநடத்திய",
+  "GOOD_MORNING": "காலை வணக்கம்",
+  "GOOD_AFTERNOON": "மதிய வணக்கம்",
+  "GOOD_EVENING": "மாலை வணக்கம்",
+  "SELECT_LANGUAGE": "மொழியை தேர்ந்தெடுக்கவும்",
+  "LANGUAGE_ENGLISH": "ஆங்கிலம்",
+  "LANGUAGE_HINDI": "இந்தி",
+  "LANGUAGE_KANNADA": "கன்னடம்",
+  "LANGUAGE_TELUGU": "தெலுங்கு",
+  "LANGUAGE_TAMIL": "தமிழ்",
+  "LANGUAGE_MALAYALAM": "மலையாளம்",
+  "SELECT_THEME": "தீம்தேர்ந்தெடுக்கவும்",
+  "THEME_DARK": "டார்க்",
+  "THEME_LIGHT": "லைட்",
+  "LOGOUT": "வெளியேறு"
+}

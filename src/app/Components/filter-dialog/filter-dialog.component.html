@@ -1,6 +1,6 @@
 <form [formGroup]="filterForm" (ngSubmit)="applyFilter()">
   <div class="filter-container">
-    <mat-form-field>
+    <mat-form-field class="filter-field" appearance="outline">
       <mat-label>Status</mat-label>
       <mat-select formControlName="status">
         <mat-option value="">All</mat-option>
@@ -9,7 +9,7 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <mat-label>Start Date</mat-label>
       <input
         matInput
@@ -23,7 +23,7 @@
       <mat-datepicker #startDatePicker></mat-datepicker>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <mat-label>End Date</mat-label>
       <input
         matInput

@@ -1,0 +1,256 @@
+.genai-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  color: white;
+  margin-top: 110px;
+  height: 100vh;
+}
+
+h1 {
+  color: #45fffc;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.input-section {
+  background-color: #29263c;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(69, 255, 252, 0.2);
+}
+
+.file-upload-container {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  flex-wrap: wrap;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.upload-button {
+  display: flex;
+  align-items: center;
+  background-color: #1a1621;
+  color: #45fffc;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid rgba(69, 255, 252, 0.5);
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+.upload-button:hover {
+  background-color: #000000;
+  box-shadow: 0 4px 10px rgba(69, 255, 252, 0.3);
+}
+
+.upload-button span {
+  margin-left: 8px;
+}
+
+.file-name {
+  margin-left: 15px;
+  color: #45fffc;
+  font-style: italic;
+}
+
+.url-input {
+  margin: 15px 0;
+}
+
+input[type="text"] {
+  width: 98%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(69, 255, 252, 0.5);
+  background-color: #1a1621;
+  color: white;
+  margin-top: 8px;
+}
+
+button {
+  background-color: #1f2937;
+  color: white;
+  border: 1px solid #45fffc;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(69, 255, 252, 0.3);
+}
+
+button:hover:not([disabled]) {
+  background-color: #000000;
+  box-shadow: 0 4px 10px rgba(113, 255, 250, 0.5);
+}
+
+button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#analyze-btn {
+  display: block;
+  margin: 20px auto 5px;
+  min-width: 180px;
+}
+
+.error-message {
+  color: #ff4d6d;
+  text-align: center;
+  margin: 15px 0;
+  padding: 10px;
+  background-color: rgba(255, 77, 109, 0.1);
+  border-radius: 5px;
+  border-left: 3px solid #ff4d6d;
+}
+
+.preview-container {
+  text-align: center;
+  margin: 25px 0;
+}
+
+.image-preview {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 5px;
+  border: 1px solid rgba(69, 255, 252, 0.3);
+}
+
+.text-result {
+  background-color: #1a1621;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(69, 255, 252, 0.3);
+  margin-top: 20px;
+}
+
+.text-content {
+  white-space: pre-wrap;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 5px;
+}
+
+.copy-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  margin-left: auto;
+}
+
+.loading-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0;
+}
+
+.loading-animation {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.orbit {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid transparent;
+  border-top-color: #45fffc;
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite;
+}
+
+.orbit:nth-child(2) {
+  width: 70%;
+  height: 70%;
+  top: 15%;
+  left: 15%;
+  animation-duration: 2s;
+  border-top-color: #9a45ff;
+}
+
+.orbit:nth-child(3) {
+  width: 40%;
+  height: 40%;
+  top: 30%;
+  left: 30%;
+  animation-duration: 1s;
+  border-top-color: #ff45a7;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #45fffc;
+}
+
+.dot-typing {
+  position: relative;
+  left: 5px;
+  top: 5px;
+  display: inline-block;
+}
+
+.dot-typing::after {
+  content: "...";
+  animation: typing 1.5s infinite;
+}
+
+@keyframes typing {
+  0% {
+    content: ".";
+  }
+  25% {
+    content: "..";
+  }
+  50% {
+    content: "...";
+  }
+  75% {
+    content: "..";
+  }
+}
+
+.instructions {
+  margin-top: 30px;
+  background-color: #29263c;
+  padding: 15px 20px;
+  border-radius: 8px;
+  border-left: 3px solid #45fffc;
+}
+
+.instructions h3 {
+  color: #45fffc;
+  margin-bottom: 10px;
+}
+
+.instructions ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.instructions li {
+  margin-bottom: 8px;
+  opacity: 0.9;
+}

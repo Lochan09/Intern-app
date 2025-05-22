@@ -30,6 +30,10 @@
 .greet-message {
   margin-right: 15px;
   font-size: 16px;
+  font-family: "Poppins", "Roboto", "Montserrat", "Trebuchet MS", Arial,
+    sans-serif;
+  font-weight: 600;
+  color: #ffffff;
 }
 
 .time {
@@ -41,30 +45,29 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px; /* Space between the icon and text */
+  gap: 8px;
   margin-right: 20px;
   padding: 8px 16px;
   font-size: 14px;
   font-weight: 600;
-  color: #ffffff; /* White text */
-  background-color: #f44336; /* Red background */
+  color: #ffffff;
+  background-color: #f44336;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 #logoutButton:hover {
-  background-color: #d32f2f; /* Darker red on hover */
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
-  transform: translateY(-2px); /* Slight lift effect */
+  background-color: #d32f2f;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
 }
-
 #logoutButton:active {
-  background-color: #b71c1c; /* Even darker red on click */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow on click */
-  transform: translateY(0); /* Reset lift effect */
+  background-color: #b71c1c;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: translateY(0);
 }
 
 #logoutButton i {
@@ -94,6 +97,290 @@ body {
     border-radius: 5px;
     background-color: #0e0c1f;
     color: #ffffff;
+    cursor: pointer;
     transition: all 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 0 5px rgba(105, 246, 236, 0.5);
+      border-color: #00ffdd;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #00ffdd;
+      box-shadow: 0 0 8px rgba(105, 246, 236, 0.7);
+    }
+
+    option {
+      background-color: #1f2937;
+      color: #ffffff;
+      padding: 8px;
+    }
+  }
+}
+select {
+  padding: 5px 10px;
+  font-size: 14px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  background-color: #0e0c1f;
+  color: #ffffff;
+  transition: all 0.3s ease-in-out;
+}
+
+.languageSelector {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+
+  label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+    margin-right: 10px;
+  }
+
+  select {
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background-color: #0e0c1f;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 0 5px rgba(105, 246, 236, 0.5);
+      border-color: #00ffdd;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #00ffdd;
+      box-shadow: 0 0 8px rgba(105, 246, 236, 0.7);
+    }
+
+    option {
+      background-color: #1f2937;
+      color: #ffffff;
+      padding: 8px;
+    }
+  }
+}
+
+@media (max-width: 820px) {
+  .header-container {
+    height: 50px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .header-text {
+    font-size: 18px;
+  }
+
+  .greet-message,
+  .time {
+    font-size: 14px;
+  }
+
+  #logoutButton {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .themeSelector label {
+    font-size: 12px;
+  }
+
+  .themeSelector select {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}
+
+/* For iPhone XR (max-width: 414px) */
+@media (max-width: 414px) {
+  .header-container {
+    height: 48px;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
+  .header-text {
+    font-size: 16px;
+  }
+
+  .greet-message,
+  .time {
+    font-size: 12px;
+  }
+
+  .languageSelector {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .icon-label {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  .icon-label mat-icon {
+    font-size: 22px;
+    height: 22px;
+    width: 22px;
+  }
+
+  .flag-select {
+    font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
+    padding: 5px 8px;
+    border-radius: 5px;
+    background-color: #1a1621;
+    color: #ffffff;
+    border: 1px solid #00ffdd;
+    box-shadow: 0 2px 6px rgba(105, 246, 236, 0.3);
+  }
+
+  .flag-select option {
+    padding: 8px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Hide text but keep flag (optional approach) */
+  .flag-select-icon-only option {
+    font-size: 0;
+  }
+
+  .flag-select-icon-only option::before {
+    content: attr(data-icon);
+    font-size: 16px;
+  }
+
+  #logoutButton {
+    font-size: 10px;
+    padding: 5px 10px;
+  }
+
+  .themeSelector label {
+    font-size: 10px;
+  }
+
+  .themeSelector select {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+}
+
+/* For iPhone SE (max-width: 375px) */
+@media (max-width: 375px) {
+  .header-container {
+    height: 45px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .header-text {
+    font-size: 9px;
+  }
+
+  .greet-message,
+  .time {
+    font-size: 10px;
+  }
+
+  #logoutButton {
+    font-size: 9px;
+    padding: 4px 8px;
+  }
+
+  .themeSelector label {
+    font-size: 9px;
+  }
+
+  .languageSelector label,
+  select {
+    font-size: 10px;
+  }
+
+  .themeSelector select {
+    font-size: 9px;
+    padding: 3px 5px;
+  }
+}
+
+/* For Laptops (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .header-container {
+    height: 55px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .right-part {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+  }
+
+  .header-text {
+    font-size: 12px;
+  }
+
+  .greet-message,
+  .time {
+    font-size: 12px;
+  }
+
+  #logoutButton {
+    font-size: 12px;
+    padding: 7px 14px;
+  }
+
+  .themeSelector label {
+    font-size: 12px;
+  }
+
+  .themeSelector select {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}
+
+/* For PCs (min-width: 1025px) */
+@media (min-width: 1025px) {
+  .header-container {
+    height: 60px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .header-text {
+    font-size: 20px;
+  }
+
+  .greet-message,
+  .time {
+    font-size: 16px;
+  }
+
+  #logoutButton {
+    font-size: 14px;
+    padding: 8px 16px;
+    margin-right: 25px;
+  }
+
+  .themeSelector label {
+    font-size: 14px;
+  }
+
+  .themeSelector select {
+    font-size: 14px;
+    padding: 5px 10px;
   }
 }

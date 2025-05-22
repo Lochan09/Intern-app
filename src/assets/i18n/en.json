@@ -1,0 +1,17 @@
+{
+  "APP_TITLE": "InfoStream, guided by Mahaboob",
+  "GOOD_MORNING": "Good Morning",
+  "GOOD_AFTERNOON": "Good Afternoon",
+  "GOOD_EVENING": "Good Evening",
+  "SELECT_LANGUAGE": "Select Language",
+  "LANGUAGE_ENGLISH": "English",
+  "LANGUAGE_HINDI": "Hindi",
+  "LANGUAGE_KANNADA": "Kannada",
+  "LANGUAGE_TELUGU": "Telugu",
+  "LANGUAGE_TAMIL": "Tamil",
+  "LANGUAGE_MALAYALAM": "Malayalam",
+  "SELECT_THEME": "Select Theme",
+  "THEME_DARK": "Dark",
+  "THEME_LIGHT": "Light",
+  "LOGOUT": "Logout"
+}

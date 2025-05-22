@@ -1,6 +1,160 @@
 .filter-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 16px;
+  margin-bottom: 0px;
+  padding: 15px;
+  background-color: #1a1621;
+  border-radius: 0px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border: 1px solid #00ffdd;
+  max-width: 500px;
+  width: 89%;
+}
+
+// Target the actual form field background
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex {
+  background-color: #1a1621 !important;
+}
+
+// For outline appearance - control the outline color
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: rgba(0, 255, 221, 0.5) !important;
+}
+
+::ng-deep.filter-field {
+  color: white !important;
+}
+
+::ng-deep .filter-container .mat-form-field {
+  width: 100%;
+
+  .mat-form-field-wrapper {
+    padding-bottom: 1em;
+  }
+
+  .mat-form-field-label {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  &.mat-focused .mat-form-field-label {
+    color: #00ffdd !important;
+  }
+
+  .mat-form-field-underline {
+    background-color: rgba(0, 255, 221, 0.5) !important;
+  }
+
+  .mat-form-field-ripple {
+    background-color: #00ffdd !important;
+  }
+
+  &.mat-form-field-invalid .mat-form-field-ripple {
+    background-color: #ff3d71 !important;
+  }
+
+  .mat-input-element {
+    color: #ffffff;
+    caret-color: #00ffdd;
+  }
+
+  .mat-select-arrow {
+    color: #00ffdd;
+  }
+
+  .mat-select-value-text {
+    color: #ffffff !important;
+  }
+}
+
+button[type="submit"] {
+  background-color: #1f2937;
+  box-shadow: 0 4px 10px rgba(105, 246, 236, 0.5);
+  border: 1px solid #00ffdd;
+  color: #ffffff;
+  font-weight: 500;
+  border-radius: 5px;
+  padding: 10px 16px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-top: 8px;
+
+  &:hover {
+    background-color: #000000;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(246, 105, 237, 0.5);
+    border: 1px solid #ff00f2;
+  }
+}
+
+::ng-deep .mat-select-panel {
+  background-color: #1a1621 !important;
+  border: 1px solid #00ffdd !important;
+  border-radius: 5px !important;
+  box-shadow: 0 4px 10px rgba(105, 246, 236, 0.5) !important;
+
+  .mat-option {
+    color: #ffffff !important;
+
+    &:hover:not(.mat-option-disabled) {
+      background-color: rgba(0, 255, 221, 0.15) !important;
+    }
+
+    &.mat-selected:not(.mat-option-disabled) {
+      color: #00ffdd !important;
+    }
+
+    &.mat-active {
+      background-color: rgba(0, 255, 221, 0.25) !important;
+    }
+  }
+}
+
+::ng-deep .mat-datepicker-content {
+  background-color: #1a1621 !important;
+  border: 1px solid #00ffdd !important;
+  color: white !important;
+  box-shadow: 0 4px 10px rgba(105, 246, 236, 0.5) !important;
+
+  .mat-calendar {
+    background-color: #1a1621;
+
+    .mat-calendar-body-label,
+    .mat-calendar-period-button,
+    .mat-calendar-arrow,
+    .mat-calendar-next-button,
+    .mat-calendar-previous-button {
+      color: #ffffff !important;
+    }
+
+    .mat-calendar-body-selected {
+      background-color: #00ffdd !important;
+      color: #000000 !important;
+    }
+
+    .mat-calendar-body-today:not(.mat-calendar-body-selected) {
+      border-color: rgba(0, 255, 221, 0.5) !important;
+    }
+
+    .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover
+      > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {
+      background-color: rgba(0, 255, 221, 0.25) !important;
+    }
+  }
+}
+
+::ng-deep .cdk-overlay-pane {
+  max-width: 90vw !important;
+}
+
+@media (max-width: 768px) {
+  .filter-container {
+    padding: 10px;
+  }
+
+  button[type="submit"] {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
 }

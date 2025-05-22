@@ -19,11 +19,29 @@ body {
 body.light-mode {
   background-color: #add8e6;
   color: black;
-}
 
-body.light-mode .container,
-body.light-mode .header-container,
-body.light-mode .table-container {
-  background-color: #add8e6;
-  color: #000000;
+  th.mat-column-actions,
+  th.mat-column-createdDate,
+  th.mat-column-status,
+  th.mat-column-category,
+  th.mat-column-description,
+  th.mat-column-productName,
+  th.mat-column-id,
+  th.mat-column-select {
+    background-color: rgb(194, 223, 253) !important;
+    color: #000000 !important;
+  }
+
+  .container,
+  .header-container,
+  .table-container,
+  .greet-message,
+  .language-selector,
+  #language-icon,
+  #select-theme,
+  #label,
+  #searchLabel {
+    background-color: #cbffff !important;
+    color: #000000 !important;
+  }
 }

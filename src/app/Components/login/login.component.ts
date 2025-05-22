@@ -5,15 +5,22 @@ import { NgIf } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { AuthService } from '../../auth.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, NgIf, MatButtonModule, MatButtonToggleModule],
+  imports: [
+    FormsModule,
+    NgIf,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatIconModule,
+  ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   title = 'Login page';
   username: string = '';
   password: string = '';
@@ -24,24 +31,6 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private renderer: Renderer2
   ) {}
-
-  ngOnInit(): void {
-    this.addMouseMoveListener();
-  }
-
-  addMouseMoveListener(): void {
-    this.renderer.listen('document', 'mousemove', (event) => {
-      const bubble = this.renderer.createElement('div');
-      this.renderer.addClass(bubble, 'bubble');
-      this.renderer.setStyle(bubble, 'left', `${event.clientX}px`);
-      this.renderer.setStyle(bubble, 'top', `${event.clientY}px`);
-      document.body.appendChild(bubble);
-
-      setTimeout(() => {
-        this.renderer.removeChild(document.body, bubble);
-      }, 1000);
-    });
-  }
 
   login() {
     if (this.username === 'admin' && this.password === 'admin123') {
@@ -58,5 +47,10 @@ export class LoginComponent implements OnInit {
       this.errorMessage =
         'Login failed. Please check your credentials and try again.';
     }
+  }
+
+  navigateToGenai(): void {
+    console.log('Navigating to Genai Component');
+    this.router.navigate(['/genai']);
   }
 }

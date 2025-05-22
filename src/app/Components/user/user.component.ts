@@ -220,33 +220,33 @@ export class UserComponent implements OnInit, AfterViewInit {
   }
 
   applyFilter(): void {
-    const filter = this.filterForm.value;
-    const searchTerm = this.myGroup
-      .get('searchTerm')
-      ?.value.trim()
+    const searchTerm = (this.myGroup.get('searchTerm')?.value || '')
+      .trim()
       .toLowerCase();
-    const status = filter.status;
-    const startDate = filter.startDate ? new Date(filter.startDate) : null;
-    const endDate = filter.endDate ? new Date(filter.endDate) : null;
+
+    if (!searchTerm) {
+      this.dataSource.data = [...this.originalData];
+      this.dataSource._updateChangeSubscription();
+      return;
+    }
 
     this.dataSource.data = this.originalData.filter((item: any) => {
-      const matchesSearchTerm =
-        item.category.toLowerCase().includes(searchTerm) ||
-        item.status.toLowerCase().includes(searchTerm) ||
-        item.createdDate.toLowerCase().includes(searchTerm);
-
-      const matchesStatus = status ? item.status === status : true;
-
-      const itemDate = new Date(item.createdDate);
-      const matchesDateRange =
-        (!startDate || itemDate >= startDate) &&
-        (!endDate || itemDate <= endDate);
-
-      return matchesSearchTerm && matchesStatus && matchesDateRange;
+      return (
+        item.id?.toString().toLowerCase().includes(searchTerm) ||
+        item.productName?.toLowerCase().includes(searchTerm) ||
+        item.description?.toLowerCase().includes(searchTerm) ||
+        item.category?.toLowerCase().includes(searchTerm) ||
+        item.status?.toLowerCase().includes(searchTerm) ||
+        item.createdDate?.toLowerCase().includes(searchTerm)
+      );
     });
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+
     this.dataSource._updateChangeSubscription();
   }
-
   toggleFilters(): void {
     const dialogRef = this.dialog.open(FilterDialogComponent, {
       width: '300px',
@@ -290,31 +290,71 @@ export class UserComponent implements OnInit, AfterViewInit {
     this.dataSource._updateChangeSubscription();
   }
 
+  sortState: { [key: string]: 'asc' | 'desc' | null } = {};
+
   sortDataByHeader(column: string): void {
+    if (!this.sortState[column]) {
+      Object.keys(this.sortState).forEach((key) => {
+        if (key !== column) this.sortState[key] = null;
+      });
+      this.sortState[column] = 'asc';
+    } else if (this.sortState[column] === 'asc') {
+      this.sortState[column] = 'desc';
+    } else {
+      this.sortState[column] = null;
+    }
+
     let sortedData = [...this.originalData];
+
+    if (this.sortState[column] === null) {
+      this.dataSource.data = [...this.originalData];
+      return;
+    }
 
     if (column === 'status') {
       sortedData.sort((a, b) => {
-        if (a.status === 'completed' && b.status !== 'completed') {
-          return -1;
-        } else if (a.status !== 'completed' && b.status === 'completed') {
-          return 1;
-        } else {
+        const aValue = a.status?.toLowerCase() || '';
+        const bValue = b.status?.toLowerCase() || '';
+
+        if (aValue === bValue) {
           return 0;
+        }
+
+        if (this.sortState[column] === 'asc') {
+          return aValue === 'completed'
+            ? -1
+            : bValue === 'completed'
+            ? 1
+            : aValue.localeCompare(bValue);
+        } else {
+          return aValue === 'completed'
+            ? 1
+            : bValue === 'completed'
+            ? -1
+            : bValue.localeCompare(aValue);
         }
       });
     } else if (column === 'createdDate') {
       sortedData.sort((a, b) => {
-        return (
-          new Date(a.createdDate).getTime() - new Date(b.createdDate).getTime()
-        );
+        const aDate = new Date(a.createdDate).getTime();
+        const bDate = new Date(b.createdDate).getTime();
+
+        return this.sortState[column] === 'asc' ? aDate - bDate : bDate - aDate;
+      });
+    } else {
+      sortedData.sort((a, b) => {
+        const aValue = a[column]?.toString().toLowerCase() || '';
+        const bValue = b[column]?.toString().toLowerCase() || '';
+
+        if (this.sortState[column] === 'asc') {
+          return aValue.localeCompare(bValue);
+        } else {
+          return bValue.localeCompare(aValue);
+        }
       });
     }
 
-    this.dataSource.data = sortedData.map((item, index) => ({
-      ...item,
-      id: this.originalData[index].id,
-    }));
+    this.dataSource.data = sortedData;
     this.dataSource._updateChangeSubscription();
   }
 

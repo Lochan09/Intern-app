@@ -3,10 +3,11 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  width: 100%;
   margin: 0;
   font-family: Arial, sans-serif;
   overflow: hidden;
-  background: linear-gradient(120deg, #1f2937, #3b82f6, #1f2937);
+  background: linear-gradient(120deg, #181f2a, #3bf6ea, #181f2a);
   background-size: 300% 300%;
   animation: gradientAnimation 8s ease infinite;
 }
@@ -29,13 +30,14 @@ body {
   justify-content: center;
   align-items: stretch;
   background-color: rgba(255, 255, 255, 0.8);
-  opacity: 0.7;
+  opacity: 0.9;
   backdrop-filter: blur(10px);
   color: black;
   padding: 3rem;
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
+  max-width: 400px; /* Limit the width for larger screens */
   z-index: 1000;
   animation: slideIn 1s ease-in-out;
 }
@@ -86,10 +88,11 @@ label {
   display: block;
   color: black;
   margin-bottom: 0.5rem;
+  font-size: 1rem;
 }
 
 input {
-  width: 93%;
+  width: 100%;
   padding: 0.5rem 0.75rem;
   border: 1px solid #d1d5db;
   border-radius: 0.5rem;
@@ -187,5 +190,161 @@ button:hover {
   }
   100% {
     transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    max-width: 90%;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+  }
+
+  button {
+    padding: 0.4rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 95%;
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1rem;
+  }
+
+  input {
+    padding: 0.4rem 0.6rem;
+  }
+
+  button {
+    padding: 0.3rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 0.9rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+  input {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.6rem;
+    width: 94%;
+  }
+
+  label {
+    font-size: 0.9rem;
+  }
+
+  button {
+    padding: 0.2rem 0;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .container {
+    max-width: 95%;
+    padding: 0.8rem;
+  }
+
+  h1 {
+    font-size: 0.85rem;
+  }
+
+  input {
+    padding: 0.3rem 0.4rem;
+    font-size: 0.85rem;
+  }
+
+  button {
+    padding: 0.2rem 0;
+    font-size: 0.85rem;
+  }
+
+  .error-message {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .container {
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1rem;
+  }
+
+  input {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.85rem;
+    width: 90%;
+  }
+
+  button {
+    padding: 0.3rem 0;
+    font-size: 0.9rem;
+  }
+
+  .error-message {
+    font-size: 0.85rem;
+  }
+
+  label {
+    font-size: 0.9rem;
+  }
+
+  p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+  }
+
+  input {
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    width: 90%;
+  }
+
+  button {
+    padding: 0.4rem 0;
+    font-size: 1rem;
+  }
+
+  .error-message {
+    font-size: 0.9rem;
+  }
+
+  label {
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 0.95rem;
   }
 }

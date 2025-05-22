@@ -1,0 +1,46 @@
+<div class="genai-container">
+  <h1>Text to Image Generator</h1>
+
+  <div class="input-section">
+    <label for="input">Create an image from text prompt: </label>
+    <input
+      type="text"
+      id="input"
+      placeholder="Enter a detailed description..."
+    />
+    <button id="btn" [disabled]="isLoading">
+      {{ isLoading ? "Generating..." : "Generate" }}
+    </button>
+  </div>
+
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <div class="image-container">
+    <div class="loading-indicator" *ngIf="isLoading">
+      <div class="loading-animation">
+        <div class="orbit"></div>
+        <div class="orbit"></div>
+        <div class="orbit"></div>
+      </div>
+      <div class="loading-text">
+        <span>AI is generating your image</span>
+        <div class="dot-typing"></div>
+      </div>
+    </div>
+    <img id="image" src="" alt="Generated image will appear here" />
+  </div>
+
+  <div class="instructions">
+    <h3>Tips for better results:</h3>
+    <ul>
+      <li>Be specific and detailed in your description</li>
+      <li>
+        Try describing styles like "oil painting", "digital art", or
+        "photograph"
+      </li>
+      <li>Include details about lighting, colors, and composition</li>
+    </ul>
+  </div>
+</div>
